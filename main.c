@@ -15,18 +15,11 @@
 void printMenu(const size_t menuItemCount, char** menuItems, int index) {
     gotoxy(0,0);
     for(int i = 0; i < menuItemCount; i++) {
-        printf("%s\r", CLSLINE);
+        printf(RESET"%s\r", CLSLINE);
         if(i == index) printf(BWHT FBLK "*");
         printf("%s\n"RESET, menuItems[i]);
     }
     printf("\n(q)uit (enter)select :");
-}
-
-void loopkeys() {
-    while(1) {
-        char c = getch();
-        printf("%c : %d\n", c, c);
-    }
 }
 
 int main(void) {
