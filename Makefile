@@ -11,3 +11,5 @@ clear:
 
 loopkeys:
 	cd utils/loopkeys && make
+
+all: bin/main loopkeys
