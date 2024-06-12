@@ -1,15 +1,26 @@
-bin/main: obj/main.o
-	cc obj/main.o -o bin/main
+BUILD_DIR = build
+DEBUG_DIR = $(BUILD_DIR)/Debug
+RELEASE_DIR = $(BUILD_DIR)/Release
 
-obj/%.o: src/%.c
-	mkdir -p obj/
+DEBUG_OUT = $(DEBUG_DIR)/outDebug
+LIB_OUT = $(DEBUG_DIR)/libmenu.o
+LIB_LINK = $(DEBUG_DIR)/libmenu.a
+
+all: clean lib Debug
+
+$(DEBUG_OUT):$(DEBUG_DIR)/main.o $(LIB_LINK)
+	cc $(DEBUG_DIR)/main.o $(LIB_LINK) -o $(DEBUG_OUT)
+
+$(DEBUG_DIR)/%.o:%.c
+	mkdir -p $(DEBUG_DIR)
 	cc -c -o $@ $<
 
-clear:
-	rm -rf obj/*
-	rm -rf bin/*
+Debug:$(DEBUG_OUT)
+	./$(DEBUG_OUT)
 
-loopkeys:
-	cd utils/loopkeys && make
+lib:$(LIB_OUT)
+	ar ruv $(LIB_LINK) $(LIB_OUT)
+	ranlib $(LIB_LINK)
 
-all: bin/main loopkeys
+clean:
+	rm -rf $(BUILD_DIR)
