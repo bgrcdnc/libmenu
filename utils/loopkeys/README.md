@@ -1,1 +1,0 @@
-Small utility used to get int values of keys pressed in terminal

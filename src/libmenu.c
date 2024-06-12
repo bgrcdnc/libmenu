@@ -1,5 +1,5 @@
 #include "libmenu.h"
-#include "utils.h"
+#include "utils/utils.h"
 #include <stdio.h>
 #include <signal.h>
 
@@ -48,19 +48,19 @@ void printMenu(Menu *menu) {
     }
 }
 
-int menuLoop(Menu *menu) {
+MenuIndex menuLoop(Menu *menu) {
     clear();
-    int loop = TRUE, ch, c1, c2;
-    while(loop > FALSE) {
+    int ch, c1, c2;
+    while(TRUE) {
         printMenu(menu);
         ch = (int)getch();
         switch(ch) {
         case KEY_QUIT:
         case to_upper(KEY_QUIT):
-            loop = FALSE;
+            return -1;
             break;
         case KEY_ENTER:
-            loop = SELECTED;
+            return menu->index;
             break;
         case KEY_CONS_COMM:
             c1 = (int)getch();

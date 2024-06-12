@@ -1,5 +1,4 @@
-#include <termios.h>
-#include <stdio.h>
+#include <stddef.h>
 
 typedef struct {
     char name[80];

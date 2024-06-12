@@ -1,4 +1,5 @@
 #include <termios.h>
+#include <stdio.h>
 
 void initTermios(int); /* Initialize new terminal i/o settings */
 void resetTermios(void); /* Restore old terminal i/o settings */
