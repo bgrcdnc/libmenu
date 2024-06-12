@@ -31,7 +31,7 @@ int initMenui(Menu *menu, MenuItem items[], int index)
     menu->items = items;
     menu->len = menuGetLen(items);
     menu->index = index;
-    printf("len:'%lu'\nindex:'%d'", menu->len, menu->index);
+
     return 0;
 }
 
@@ -68,7 +68,7 @@ int menuLoop(Menu *menu) {
             if(c1 == KEY_CONS_COMM_PREF) {
                 switch(c2) {
                 case KEY_UP:
-                    menu->index++;
+                    menu->index--;
                     if(menu->index < 0) menu->index = ((int)menu->len-1);
                     break;
                 case KEY_DOWN:
