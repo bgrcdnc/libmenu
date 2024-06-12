@@ -1,7 +1,5 @@
 # libmenu
 
-## WORK IN PROGRESS
-
 Menu implementation using arrow keys, written in C for Linux
 
 TODO: Add Windows support
