@@ -1,20 +1,20 @@
 #include <termios.h>
 #include <stdio.h>
 
-#define FALSE (0)
-#define TRUE (1)
-#define SELECTED -1
+typedef struct {
+    char name[80];
+} MenuItem; /*typedef for the items kept in a Menu*/
 
-#define menuGetLen(x) sizeof(x) / sizeof(x[0]);
+typedef size_t MenuItemsLen; /*typedef for the items length in a Menu*/
 
-typedef char* menuItems;
-typedef size_t menuItemLen;
-typedef int menuIndex; 
+typedef int MenuIndex; /*typedef for the current index in a Menu*/
 
-void initTermios(int); /* Initialize new terminal i/o settings */
-void resetTermios(void); /* Restore old terminal i/o settings */
-char getch_(int); /* Read 1 character - echo defines echo mode */
-char getch(void); /* Read 1 character without echo */
-char getche(void); /* Read 1 character with echo */
-void printMenu(menuItemLen, menuItems*, menuIndex); /* Prints the supplied menuItems*/
-int menuLoop(menuItemLen, menuItems*, menuIndex*); /* Iterates through the menuItems until one is selected*/
+typedef struct {
+    MenuItem *items;
+    MenuItemsLen len;
+    MenuIndex index;
+} Menu;
+
+int initMenui(Menu*, MenuItem[], int index);
+int initMenu(Menu*, MenuItem[]);
+int menuLoop(Menu*); /* Iterates through the menuItems until one is selected*/

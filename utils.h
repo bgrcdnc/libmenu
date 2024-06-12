@@ -1,3 +1,11 @@
+#include <termios.h>
+
+void initTermios(int); /* Initialize new terminal i/o settings */
+void resetTermios(void); /* Restore old terminal i/o settings */
+char getch_(int); /* Read 1 character - echo defines echo mode */
+char getch(void); /* Read 1 character without echo */
+char getche(void); /* Read 1 character with echo */
+
 //Useful commands for console
 #define console_command(x) printf("\x1B[%dm", x)
 #define gotoxy(x, y) printf("%c[%d;%df",0x1B,y,x)

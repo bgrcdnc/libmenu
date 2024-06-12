@@ -4,12 +4,13 @@ RELEASE_DIR = $(BUILD_DIR)/Release
 
 DEBUG_OUT = $(DEBUG_DIR)/outDebug
 LIB_OUT = $(DEBUG_DIR)/libmenu.o
+UTILS_OUT = $(DEBUG_DIR)/utils.o
 LIB_LINK = $(DEBUG_DIR)/libmenu.a
 
 all: clean lib Debug
 
-$(DEBUG_OUT):$(DEBUG_DIR)/main.o $(LIB_LINK)
-	cc $(DEBUG_DIR)/main.o $(LIB_LINK) -o $(DEBUG_OUT)
+$(DEBUG_OUT):$(DEBUG_DIR)/main.o $(UTILS_OUT) $(LIB_LINK)
+	cc $(DEBUG_DIR)/main.o $(UTILS_OUT) $(LIB_LINK) -o $(DEBUG_OUT)
 
 $(DEBUG_DIR)/%.o:%.c
 	mkdir -p $(DEBUG_DIR)
